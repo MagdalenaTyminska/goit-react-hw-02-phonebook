@@ -4,6 +4,7 @@ import { nanoid } from 'nanoid';
 import { Section } from './Section/Section';
 // import { ContactList } from './ContactList/ContactList';
 // import { ContactForm } from './ContactForm/ContactForm';
+// import { Filter } from './Filter/Filter';
 
 export class App extends Component {
   state = {
