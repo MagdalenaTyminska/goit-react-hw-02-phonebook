@@ -2,6 +2,9 @@
   font-size: 32px;
   display: flex;
   justify-content: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
+}
+
+.section {
+  width: 100%;
+  max-width: 500px;
 }

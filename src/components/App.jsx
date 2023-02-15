@@ -34,15 +34,35 @@ export class App extends Component {
       name: this.state.name,
       number: this.state.number,
     };
-    this.setState({
-      contacts: [...this.state.contacts, contact],
-    });
+
+    const nameExist = this.state.contacts.find(
+      contact => contact.name === this.state.name
+    );
+    const numberExist = this.state.contacts.find(
+      contact => contact.number === this.state.number
+    );
+
+    if (nameExist) {
+      alert(`${this.state.name} is already in contacts`);
+    } else if (numberExist) {
+      alert(`This number ${this.state.number} is already in contacts`);
+    } else
+      this.setState({
+        contacts: [...this.state.contacts, contact],
+      });
   };
 
   handleSearch = event => {
     event.preventDefault();
     const { value } = event.target;
     this.setState({ filter: value });
+  };
+
+  handleRemove = event => {
+    const { contacts } = this.state;
+    console.log(event.target.id);
+    const filtered = contacts.filter(contact => contact.id !== event.target.id);
+    this.setState({ contacts: filtered });
   };
 
   render() {
@@ -95,6 +115,14 @@ export class App extends Component {
                 .map(contact => (
                   <li key={contact.id}>
                     {contact.name}: {contact.number}
+                    <button
+                      id={contact.id}
+                      type="button"
+                      onClick={this.handleRemove}
+                    >
+                      {' '}
+                      Delete{' '}
+                    </button>
                   </li>
                 ))}
             </ul>
