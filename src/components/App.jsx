@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import css from './App.module.css';
 import { nanoid } from 'nanoid';
 import { Section } from './Section/Section';
+import { InputField } from './ContactForm/InputField/InputField';
+import { ContactForm } from './ContactForm/ContactForm';
 // import { ContactList } from './ContactList/ContactList';
 // import { ContactForm } from './ContactForm/ContactForm';
 // import { Filter } from './Filter/Filter';
@@ -48,27 +50,29 @@ export class App extends Component {
       <>
         <div className={css.boxApp}>
           <Section title="Phonebook">
-            <form onSubmit={this.handleSubmit}>
-              <label>name</label>
-              <input
+            <ContactForm onSubmit={this.handleSubmit} buttonLabel="Add contact">
+              <InputField
+                label="name"
                 type="text"
                 name="name"
-                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
-                title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
-                required
+                pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я
+                ])?[a-zA-Zа-яА-Я]*)*$"
+                title="Name may contain only letters,
+                apostrophe, dash and spaces. For example Adrian, Jacob Mercer,
+                Charles de Batz de Castelmore d'Artagnan"
+                required="true"
                 onChange={this.handleChange}
               />
-              <label>number</label>
-              <input
+              <InputField
+                label="number"
                 type="tel"
                 name="number"
                 pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
                 title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-                required
+                required="true"
                 onChange={this.handleChange}
               />
-              <button type="submit">Add contact</button>
-            </form>
+            </ContactForm>
           </Section>
           <Section title="Contacts">
             <p>Find contacts by name</p>
