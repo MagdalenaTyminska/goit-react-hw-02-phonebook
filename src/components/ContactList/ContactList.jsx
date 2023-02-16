@@ -1,13 +1,13 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-// import css from './ContactList.module.css';
+import css from './ContactList.module.css';
 
 export class ContactList extends Component {
   render() {
     const { filter, contacts, handleRemove } = this.props;
     return (
       <>
-        <ul>
+        <ul className={css.list}>
           {contacts
             .filter(contact => {
               if (!filter) {
@@ -20,7 +20,12 @@ export class ContactList extends Component {
             .map(contact => (
               <li key={contact.id}>
                 {contact.name}: {contact.number}
-                <button id={contact.id} type="button" onClick={handleRemove}>
+                <button
+                  className={css.contactListButton}
+                  id={contact.id}
+                  type="button"
+                  onClick={handleRemove}
+                >
                   {' '}
                   Delete{' '}
                 </button>

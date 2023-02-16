@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { InputField } from './InputField/InputField';
-
 import css from './ContactForm.module.css';
 
 export class ContactForm extends Component {
