@@ -1,22 +1,39 @@
-// import React, { Component } from 'react';
-// // import PropTypes from 'prop-types';
-// // import css from './ContactList.module.css';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
+// import css from './ContactList.module.css';
 
-// export class ContactList extends Component {
-//   render() {
-//     const { contact } = this.props;
-//     return (
-//       <>
-//         .map(contact => (
-//         <li key={contact.id}>
-//           {contact.name}: {contact.number}
-//         </li>
-//         )
-//       </>
-//     );
-//   }
-// }
+export class ContactList extends Component {
+  render() {
+    const { filter, contacts, handleRemove } = this.props;
+    return (
+      <>
+        <ul>
+          {contacts
+            .filter(contact => {
+              if (!filter) {
+                return true;
+              }
+              const lowerName = contact.name.toLowerCase();
+              const lowerFilter = filter.toLowerCase();
+              return lowerName.includes(lowerFilter);
+            })
+            .map(contact => (
+              <li key={contact.id}>
+                {contact.name}: {contact.number}
+                <button id={contact.id} type="button" onClick={handleRemove}>
+                  {' '}
+                  Delete{' '}
+                </button>
+              </li>
+            ))}
+        </ul>
+      </>
+    );
+  }
+}
 
-// //   Section.propTypes = {
-//     title: PropTypes.string.isRequired,
-// //   };
+ContactList.propTypes = {
+  handleRemove: PropTypes.func,
+  contacts: PropTypes.array,
+  filter: PropTypes.string,
+};

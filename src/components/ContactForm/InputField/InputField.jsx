@@ -3,11 +3,9 @@ import PropTypes from 'prop-types';
 import css from './InputField.module.css';
 
 export class InputField extends Component {
-  // static defaultProps = {
-  //   required: true,
-  // };
   render() {
-    const { label, type, name, pattern, title, onChange } = this.props;
+    const { label, type, name, pattern, title, onChange, required } =
+      this.props;
 
     return (
       <>
@@ -18,8 +16,7 @@ export class InputField extends Component {
           name={name}
           pattern={pattern}
           title={title}
-          //   {...({ required } ? 'required' : null)}
-          required
+          required={required}
           onChange={onChange}
         />
       </>

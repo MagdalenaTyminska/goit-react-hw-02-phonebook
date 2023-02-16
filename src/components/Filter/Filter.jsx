@@ -1,12 +1,19 @@
-// import React, { Component } from 'react';
-// import PropTypes from 'prop-types';
-// import css from './ContactList.module.css';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 
-// export class ContactList extends Component {
-//     render()
-//       return ()
-//   };
+export class Filter extends Component {
+  render() {
+    const { filter, handleSearch } = this.props;
+    return (
+      <>
+        <p>Find contacts by name</p>
+        <input type="text" value={filter} onChange={handleSearch} />
+      </>
+    );
+  }
+}
 
-// //   Section.propTypes = {
-// //     title: PropTypes.string.isRequired,
-// //   };
+Filter.propTypes = {
+  filter: PropTypes.string,
+  handleSearch: PropTypes.func,
+};
